@@ -10,7 +10,7 @@ const collections=['users','addresses','vehicles','userVehicles','products','ord
 (async()=>{
  const sdb=new DatabaseSync(sqliteFile);
  const pool=new Pool({connectionString:required,ssl:process.env.PGSSL==='false'?false:{rejectUnauthorized:false}});
- await pool.query(`CREATE TABLE IF NOT EXISTS records(collection TEXT NOT NULL,id INTEGER NOT NULL,payload JSONB NOT NULL,PRIMARY KEY(collection,id)); CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY,value JSONB NOT NULL); CREATE TABLE IF NOT EXISTS wishlist_items(id INTEGER PRIMARY KEY,owner_type TEXT NOT NULL,owner_id TEXT NOT NULL,product_id INTEGER NOT NULL,created_at TEXT NOT NULL,UNIQUE(owner_type,owner_id,product_id)); CREATE TABLE IF NOT EXISTS cart_items(id INTEGER PRIMARY KEY,owner_type TEXT NOT NULL,owner_id TEXT NOT NULL,product_id INTEGER NOT NULL,qty INTEGER NOT NULL DEFAULT 1,created_at TEXT NOT NULL,UNIQUE(owner_type,owner_id,product_id));`);
+ await pool.query(`CREATE TABLE IF NOT EXISTS records(collection TEXT NOT NULL,id TEXT NOT NULL,payload JSONB NOT NULL,PRIMARY KEY(collection,id)); CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY,value JSONB NOT NULL); CREATE TABLE IF NOT EXISTS wishlist_items(id INTEGER PRIMARY KEY,owner_type TEXT NOT NULL,owner_id TEXT NOT NULL,product_id INTEGER NOT NULL,created_at TEXT NOT NULL,UNIQUE(owner_type,owner_id,product_id)); CREATE TABLE IF NOT EXISTS cart_items(id INTEGER PRIMARY KEY,owner_type TEXT NOT NULL,owner_id TEXT NOT NULL,product_id INTEGER NOT NULL,qty INTEGER NOT NULL DEFAULT 1,created_at TEXT NOT NULL,UNIQUE(owner_type,owner_id,product_id));`);
  await pool.query('BEGIN');
  try{
    await pool.query('TRUNCATE records, meta, wishlist_items, cart_items');
