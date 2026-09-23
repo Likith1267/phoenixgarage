@@ -1,0 +1,14 @@
+{
+  "name": "phoenix-garage",
+  "version": "4.6.0",
+  "private": true,
+  "description": "Phoenix Garage local marketplace with secure authentication, customer accounts, orders, B2B and professional administration",
+  "scripts": {
+    "start": "node server/server.js",
+    "seed": "node server/seed.js",
+    "migrate:postgres": "node server/migrate-postgres.js"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
+}

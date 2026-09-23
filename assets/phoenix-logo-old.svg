@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" role="img" aria-labelledby="title desc">
+<title id="title">Phoenix Garage</title><desc id="desc">Stylized red phoenix emblem</desc>
+<defs><linearGradient id="phoenixRed" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3b30"/><stop offset="1" stop-color="#d90f1b"/></linearGradient></defs>
+<g fill="url(#phoenixRed)">
+<!-- left wing -->
+<path d="M151 113C119 105 91 91 63 68C42 51 23 35 4 28C14 57 28 78 50 95C29 88 13 79 0 68C8 101 30 126 65 143C45 140 28 135 13 128C31 162 62 184 106 188C84 199 66 209 53 223C87 221 119 208 145 187L151 113Z"/>
+<!-- right wing -->
+<path d="M169 113C201 105 229 91 257 68C278 51 297 35 316 28C306 57 292 78 270 95C291 88 307 79 320 68C312 101 290 126 255 143C275 140 292 135 307 128C289 162 258 184 214 188C236 199 254 209 267 223C233 221 201 208 175 187L169 113Z"/>
+<!-- head and body -->
+<path d="M160 63C145 63 132 74 128 89C125 101 130 111 139 118C132 135 128 151 130 171C132 192 143 214 160 236C177 214 188 192 190 171C192 151 188 135 181 118C190 111 195 101 192 89C188 74 175 63 160 63Z"/>
+<!-- tail feathers -->
+<path d="M145 174C128 198 113 218 92 242C116 235 138 226 160 211C182 226 204 235 228 242C207 218 192 198 175 174Z"/>
+<!-- head highlight / beak -->
+<path fill="#fff" opacity=".92" d="M154 78c3-5 9-8 15-8l13 9-14 5c-5 2-10 0-14-6z"/>
+<path fill="#151b22" opacity=".35" d="M160 111c-9 13-13 28-12 45 1 19 5 34 12 50 7-16 11-31 12-50 1-17-3-32-12-45z"/>
+</g></svg>

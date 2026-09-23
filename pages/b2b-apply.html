@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Business Application | PHOENIX GARAGE</title>
+<script>(function(){try{var t=localStorage.getItem('apex_theme');document.documentElement.dataset.theme=(t==='dark'||t==='light'||t==='system')?t:'light'}catch(e){document.documentElement.dataset.theme='light'}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+.bizPage{min-height:100vh;background:#f5f6f8;color:#111417;font-family:Inter,system-ui,sans-serif;transition:background .2s,color .2s}
+.bizTop{height:68px;background:#111418;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px}
+.bizBrand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:900;letter-spacing:.08em}.bizBrand img{width:35px;height:35px;object-fit:contain}.bizBrand small{display:block;font-size:9px;letter-spacing:.18em;color:#9ca3aa}
+.bizTop a{color:#fff;text-decoration:none;border:1px solid #34393f;padding:9px 12px;border-radius:8px;font-size:11px;font-weight:700}
+.bizWrap{max-width:1080px;margin:0 auto;padding:48px 22px 70px}.bizHero{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-bottom:25px}.bizEyebrow{color:#c81f29;font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.bizHero h1{font-size:42px;line-height:1.02;letter-spacing:-.05em;margin:9px 0 12px}.bizHero p{font-size:14px;line-height:1.65;color:#626a72;margin:0}
+.bizPoints{display:grid;grid-template-columns:1fr 1fr;gap:10px}.bizPoint{background:#fff;border:1px solid #e3e5e7;border-radius:12px;padding:15px}.bizPoint b{font-size:12px}.bizPoint p{font-size:10px;line-height:1.5;margin-top:5px}
+.bizCard{background:#fff;border:1px solid #e1e3e5;border-radius:16px;box-shadow:0 10px 35px rgba(17,20,23,.06);padding:25px}.bizCard h2{margin:0 0 5px;font-size:19px}.bizCard>p{font-size:11px;color:#70777e;margin:0 0 18px}
+.bizForm{display:grid;grid-template-columns:1fr 1fr;gap:11px}.bizForm label{display:grid;gap:6px;font-size:9px;font-weight:800;color:#656d74;text-transform:uppercase;letter-spacing:.08em}.bizForm .full{grid-column:1/-1}
+.bizForm input,.bizForm select,.bizForm textarea{width:100%;box-sizing:border-box;border:1px solid #cfd5da;border-radius:8px;padding:10px;font:inherit;font-size:12px;background:#fff;color:#111417;caret-color:#111417;outline:none;transition:border-color .15s,box-shadow .15s,background .15s,color .15s}
+.bizForm input::placeholder,.bizForm textarea::placeholder{color:#8b949d}.bizForm input:focus,.bizForm select:focus,.bizForm textarea:focus{border-color:#3478e5;box-shadow:0 0 0 3px rgba(52,120,229,.12)}.bizForm textarea{min-height:85px;resize:vertical}
+.bizSubmit{margin-top:4px;border:0;background:#171a1e;color:#fff;border-radius:9px;padding:12px 15px;font:inherit;font-size:11px;font-weight:800;cursor:pointer}.bizSubmit:disabled{opacity:.65;cursor:wait}
+.bizMsg{font-size:11px;line-height:1.5;min-height:17px;margin:9px 0 0}.bizMsg.error{color:#b4232d}.bizMsg.success{color:#19734a}.bizMsg.error:before{content:"⚠ ";font-weight:800}.bizForm label.hasError{color:#b4232d}.bizForm input.hasError,.bizForm select.hasError,.bizForm textarea.hasError{border-color:#d92d20;box-shadow:0 0 0 3px rgba(217,45,32,.10)}html[data-theme="dark"] .bizForm label.hasError{color:#ff8a80}html[data-theme="dark"] .bizForm input.hasError,html[data-theme="dark"] .bizForm select.hasError,html[data-theme="dark"] .bizForm textarea.hasError{border-color:#ff6b61;box-shadow:0 0 0 3px rgba(255,107,97,.14)}
+.bizSuccess{margin-top:12px;padding:16px;border:1px solid #bfe7d2;background:#effaf4;border-radius:10px;color:#155c3d}.bizSuccess b{display:block;font-size:12px;margin-bottom:5px}.bizSuccess span{font-size:11px}.bizFooter{margin-top:16px;font-size:10px;color:#7b8289;line-height:1.6}
+html[data-theme="dark"] .bizPage{background:#0e1114;color:#eef1f3}html[data-theme="dark"] .bizHero p,html[data-theme="dark"] .bizCard>p,html[data-theme="dark"] .bizPoint p{color:#9ba4ad}html[data-theme="dark"] .bizCard,html[data-theme="dark"] .bizPoint{background:#171b20;border-color:#2c333a;color:#eef1f3;box-shadow:0 12px 40px rgba(0,0,0,.25)}html[data-theme="dark"] .bizForm label{color:#aeb7c0}html[data-theme="dark"] .bizForm input,html[data-theme="dark"] .bizForm select,html[data-theme="dark"] .bizForm textarea{background:#0f1317;border-color:#39424b;color:#f4f6f8;caret-color:#fff}html[data-theme="dark"] .bizForm input::placeholder,html[data-theme="dark"] .bizForm textarea::placeholder{color:#78838d}html[data-theme="dark"] .bizForm input:focus,html[data-theme="dark"] .bizForm select:focus,html[data-theme="dark"] .bizForm textarea:focus{border-color:#5a9bff;box-shadow:0 0 0 3px rgba(90,155,255,.16)}html[data-theme="dark"] .bizSuccess{background:#10271d;border-color:#245e45;color:#bdebd3}html[data-theme="dark"] .bizFooter{color:#7f8a94}
+@media(max-width:800px){.bizHero{grid-template-columns:1fr}.bizWrap{padding-top:30px}.bizHero h1{font-size:34px}}@media(max-width:560px){.bizForm,.bizPoints{grid-template-columns:1fr}.bizForm .full{grid-column:auto}.bizTop{padding:0 14px}.bizTop a{display:none}.bizWrap{padding-left:14px;padding-right:14px}}
+</style>
+</head>
+<body>
+<div class="bizPage">
+<header class="bizTop"><a class="bizBrand" href="../index.html"><img src="../assets/phoenix-supplied.png" alt="Phoenix Garage"><span>PHOENIX<small>BUSINESS NETWORK</small></span></a><a href="account.html">CUSTOMER ACCOUNT</a></header>
+<main class="bizWrap">
+<section class="bizHero"><div><div class="bizEyebrow">Phoenix Garage Business Network</div><h1>Build your parts business on a professional marketplace.</h1><p>Apply for a verified Manufacturer or Distributor account. Your business details are reviewed by Phoenix Garage Admin before wholesale tools are enabled.</p></div>
+<div class="bizPoints"><div class="bizPoint"><b>Verified access</b><p>Business accounts are approved before privileged B2B tools become available.</p></div><div class="bizPoint"><b>Company workspace</b><p>Manage listings, inventory, team access and company information separately from customer accounts.</p></div><div class="bizPoint"><b>Seller catalogue</b><p>Publish your own parts with SKU, stock, pricing and business identity.</p></div><div class="bizPoint"><b>Team-ready</b><p>Company owners can create staff accounts for operational work.</p></div></div></section>
+<section class="bizCard"><h2>Business account application</h2><p>Complete the required information. We will create your B2B account only after approval.</p>
+<form id="form" class="bizForm" novalidate>
+<label>Company name *<input id="company" name="company" autocomplete="organization" required></label>
+<label>Business type *<select id="type" name="business_type" required><option value="">Select type</option><option value="manufacturer">Manufacturer</option><option value="distributor">Distributor</option></select></label>
+<label>GSTIN *<input id="gstin" name="gstin" autocomplete="off" required></label>
+<label>Website<input id="website" name="website" type="url" placeholder="https://…" autocomplete="url"></label>
+<label class="full">Registered business address *<textarea id="address" name="address" autocomplete="street-address" required></textarea></label>
+<label>Primary contact *<input id="name" name="name" autocomplete="name" required></label>
+<label>Business phone *<input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
+<label>Business email *<input id="email" name="email" type="email" autocomplete="email" required></label>
+<label>Account password *<input id="password" name="password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required placeholder="8+ chars, upper/lowercase + number"></label>
+<div class="full"><button id="submitBtn" class="bizSubmit" type="submit">SUBMIT APPLICATION FOR REVIEW</button><p id="msg" class="bizMsg" role="alert"></p><div id="success" class="bizSuccess" hidden><b>Application submitted successfully.</b><span>Your application is now pending Phoenix Garage Admin review. Reference: <strong id="ref"></strong></span></div></div>
+</form>
+<div class="bizFooter">By submitting, you confirm that the business information is accurate. Approval is subject to Phoenix Garage administration review.</div>
+</section></main></div>
+<script src="../assets/app.js"></script>
+<script>
+(function(){
+ const form=document.getElementById('form'),msg=document.getElementById('msg'),success=document.getElementById('success'),ref=document.getElementById('ref'),btn=document.getElementById('submitBtn');
+ const $=id=>document.getElementById(id);
+ function fail(text,field){
+   msg.className='bizMsg error'; msg.textContent=text; success.hidden=true;
+   form.querySelectorAll('.hasError').forEach(el=>el.classList.remove('hasError'));
+   form.querySelectorAll('label.hasError').forEach(el=>el.classList.remove('hasError'));
+   if(field){const el=$(field); if(el){el.classList.add('hasError'); el.closest('label')?.classList.add('hasError'); el.focus();}}
+ }
+ function clearMsg(){msg.className='bizMsg';msg.textContent='';form.querySelectorAll('.hasError').forEach(el=>el.classList.remove('hasError'));form.querySelectorAll('label.hasError').forEach(el=>el.classList.remove('hasError'));}
+ function required(v){return String(v||'').trim().length>0}
+ form.addEventListener('submit',async function(e){
+  e.preventDefault(); clearMsg();
+  const data={company_name:$('company').value.trim(),business_type:$('type').value,gstin:$('gstin').value.trim(),website:$('website').value.trim(),address:$('address').value.trim(),name:$('name').value.trim(),phone:$('phone').value.trim(),email:$('email').value.trim(),password:$('password').value};
+  const requiredFields=[['company_name','Company name','company'],['business_type','Business type','type'],['gstin','GSTIN','gstin'],['address','Registered business address','address'],['name','Primary contact','name'],['phone','Business phone','phone'],['email','Business email','email'],['password','Account password','password']];
+  for(const [key,label,field] of requiredFields) if(!required(data[key])) return fail(`${label} is required.`,field);
+  if(data.company_name.length<2||data.company_name.length>120)return fail('Company name must be 2–120 characters.', 'company');
+  if(!['manufacturer','distributor'].includes(data.business_type))return fail('Select Manufacturer or Distributor.', 'type');
+  if(data.gstin.length<3||data.gstin.length>30)return fail('Enter a valid GSTIN/business tax ID.', 'gstin');
+  if(data.address.length<5)return fail('Enter the registered business address.', 'address');
+  if(data.name.length<2)return fail('Enter the primary contact name.', 'name');
+  if(!/^[0-9+()\-\s]{7,20}$/.test(data.phone))return fail('Business phone must contain 7–20 valid phone characters.', 'phone');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))return fail('Enter a valid business email address.', 'email');
+  if(data.password.length<8||data.password.length>128||!/[A-Z]/.test(data.password)||!/[a-z]/.test(data.password)||!/[0-9]/.test(data.password))return fail('Password must be 8–128 characters and include uppercase, lowercase, and a number.', 'password');
+  if(data.website&&!/^https?:\/\//i.test(data.website))return fail('Website must start with http:// or https://.', 'website');
+  btn.disabled=true;btn.textContent='SUBMITTING…';
+  try{const d=await api('/b2b/apply',{method:'POST',body:JSON.stringify(data)});form.reset();msg.className='bizMsg success';msg.textContent='Application received. It is now pending Admin review.';ref.textContent='#'+d.application_id;success.hidden=false;success.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  catch(err){fail(err.message||'Could not submit the application. Please try again.');}
+  finally{btn.disabled=false;btn.textContent='SUBMIT APPLICATION FOR REVIEW';}
+ });
+})();
+</script>
+</body></html>

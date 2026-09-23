@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PHOENIX GARAGE — Automotive Parts Marketplace</title>
+<script>(function(){try{var t=localStorage.getItem("apex_theme");document.documentElement.dataset.theme=(t==='dark'||t==='light'||t==='system')?t:'dark';}catch(e){document.documentElement.dataset.theme='dark';}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main>
+<section class="pgHero">
+  <div class="container pgHeroInner">
+    <div class="pgHeroCopy">
+      <span class="badge">QUALITY PARTS · STRONGER JOURNEYS</span>
+      <h1>Parts for<br><span>Every Journey.</span></h1>
+      <p>Find the right automotive parts for your exact car or bike — from everyday maintenance to performance upgrades.</p>
+      <div class="trustMini"><span>✓ Genuine &amp; OEM options</span><span>✓ Fast delivery</span><span>✓ Expert support</span></div>
+    </div>
+    <div class="pgHeroPanel" id="savedVehicleHero" aria-live="polite">
+      <div class="pgPanelGlow"></div>
+      <div class="pgVehicleEmpty" id="pgVehicleEmpty">
+        <img src="assets/phoenix-garage-mark-clean.png?v=20260914" alt="Phoenix Garage" class="pgHeroLogo">
+      </div>
+      <div class="pgSavedVehicle" id="pgSavedVehicle" hidden>
+        <div class="pgSavedVehicleImage" id="pgSavedVehicleImage"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container pgCategorySection">
+  <div class="pgSectionHead"><h2>▦ &nbsp; Shop by Category</h2><a href="pages/shop.html">View All Categories →</a></div>
+  <div class="pgCategoryGrid">
+    <a class="pgCategoryTile" href="pages/shop.html?category=Engine"><div class="pgCatIcon">⚙</div><b>Engine &amp;<br>Maintenance</b></a>
+    <a class="pgCategoryTile" href="pages/shop.html?category=Brakes"><div class="pgCatIcon">◉</div><b>Brakes</b></a>
+    <a class="pgCategoryTile" href="pages/shop.html?category=Engine"><div class="pgCatIcon">◍</div><b>Filters</b></a>
+    <a class="pgCategoryTile" href="pages/shop.html?category=Suspension"><div class="pgCatIcon">⌁</div><b>Suspension &amp; Steering</b></a>
+    <a class="pgCategoryTile" href="pages/shop.html?category=Electrical"><div class="pgCatIcon">▣</div><b>Electrical</b></a>
+    <a class="pgCategoryTile" href="pages/shop.html?category=Lighting"><div class="pgCatIcon">◈</div><b>Lighting</b></a>
+    <a class="pgCategoryTile" href="pages/shop.html?category=Cooling"><div class="pgCatIcon">◇</div><b>Cooling &amp; AC</b></a>
+    <a class="pgCategoryTile" href="pages/shop.html?category=Wheels"><div class="pgCatIcon">◌</div><b>Wheels &amp; Tyres</b></a>
+    <a class="pgCategoryTile" href="pages/shop.html?category=Accessories"><div class="pgCatIcon">✦</div><b>Accessories</b></a>
+  </div>
+</section>
+
+<section class="container pgTrustSection">
+  <div class="pgTrust"><strong>♢</strong><div><b>100% Genuine Parts</b><span>Sourced from trusted suppliers</span></div></div>
+  <div class="pgTrust"><strong>▱</strong><div><b>Wide Vehicle Coverage</b><span>Across India</span></div></div>
+  <div class="pgTrust"><strong>▤</strong><div><b>Secure Payments</b><span>Multiple payment options</span></div></div>
+  <div class="pgTrust"><strong>↶</strong><div><b>Easy Returns</b><span>Hassle-free returns</span></div></div>
+  <div class="pgTrust"><strong>♧</strong><div><b>Dedicated Support</b><span>We're here to help</span></div></div>
+</section>
+</main>
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  const VEHICLE_IMAGES={
+    'maruti|swift':'assets/vehicles/swift-2024.png?v=20260915',
+    'hyundai|creta':'assets/vehicles/creta-2024.svg?v=20260915',
+    'tata|nexon':'assets/vehicles/nexon-2024.svg?v=20260915',
+    'yamaha|r15 v4':'assets/vehicles/r15-v4.svg?v=20260915',
+    'royal enfield|classic 350':'assets/vehicles/classic-350.svg?v=20260915',
+    'ktm|duke 250':'assets/vehicles/duke-250.svg?v=20260915'
+  };
+  function key(v){return [v.brand,v.model].map(x=>String(x||'').trim().toLowerCase()).join('|')}
+  function renderSavedVehicle(){
+    const empty=document.getElementById('pgVehicleEmpty');
+    const panel=document.getElementById('pgSavedVehicle');
+    if(!empty||!panel)return;
+    let saved=null;
+    try{saved=JSON.parse(localStorage.getItem('apex_vehicle')||'null')}catch(e){}
+    if(!saved){empty.hidden=false;panel.hidden=true;return}
+    const name=[saved.year,saved.brand,saved.model].filter(Boolean).join(' ');
+    const host=document.getElementById('pgSavedVehicleImage');
+    const src=saved.image||VEHICLE_IMAGES[key(saved)]||'';
+    host.innerHTML='';
+    if(src){
+      const img=document.createElement('img');
+      img.src=src; img.alt=name||'Saved vehicle'; img.loading='eager';
+      img.onerror=function(){host.innerHTML='<div class="pgVehicleFallback">'+(saved.type==='Bike'?'🏍️':'🚗')+'</div>'};
+      host.appendChild(img);
+    }else host.innerHTML='<div class="pgVehicleFallback">'+(saved.type==='Bike'?'🏍️':'🚗')+'</div>';
+    empty.hidden=true;panel.hidden=false;
+  }
+  document.addEventListener('DOMContentLoaded',renderSavedVehicle);
+  window.addEventListener('pageshow',renderSavedVehicle);
+  window.addEventListener('storage',function(e){if(e.key==='apex_vehicle')renderSavedVehicle()});
+  window.addEventListener('phoenixVehicleSaved',renderSavedVehicle);
+  window.addEventListener('phoenixVehicleCleared',renderSavedVehicle);
+})();
+</script>
+
+
+</body>
+</html>
