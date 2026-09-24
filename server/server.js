@@ -132,5 +132,21 @@ if(p==='/api/b2b/members'&&req.method==='POST'){const u=b2bAllowed(req,res);if(!
 if(p.match(/^\/api\/b2b\/members\/\d+$/)&&req.method==='DELETE'){const u=b2bAllowed(req,res);if(!u)return;const c=b2bCompanyFor(u);if(!c||c.owner_user_id!==u.id)return json(res,403,{error:'Only the company owner can remove staff'});const mid=Number(p.split('/').pop()),m=db.b2bMembers.find(x=>x.id===mid&&x.company_id===c.id);if(!m)return json(res,404,{error:'Team member not found'});const staff=db.users.find(x=>x.id===m.user_id);if(staff?.id===c.owner_user_id)return json(res,400,{error:'Company owner cannot be removed'});db.b2bMembers=db.b2bMembers.filter(x=>x.id!==m.id);db.sessions=db.sessions.filter(x=>x.userId!==m.user_id);db.users=db.users.filter(x=>x.id!==m.user_id);await save(db);return json(res,204,{})}
 return json(res,404,{error:'API route not found'});
 }catch(e){console.error(e);return json(res,500,{error:'Server error'})}}
+function syncCanonicalCatalogue(){
+  const source=path.join(root,'data','apex.json');
+  if(!fs.existsSync(source))return false;
+  try{
+    const legacy=JSON.parse(fs.readFileSync(source,'utf8'));
+    const canonical=Array.isArray(legacy.products)?legacy.products.filter(p=>Number(p.id)>=1&&Number(p.id)<=30):[];
+    if(canonical.length!==30)return false;
+    const custom=(db.products||[]).filter(p=>{
+      const n=Number(p.id);
+      return n>30 && p.product_kind!=='universal_test' && p.seller_name!=='APEX Demo Manufacturer';
+    });
+    db.products=[...canonical,...custom];
+    db.next.product=Math.max(0,...db.products.map(p=>Number(p.id)||0))+1;
+    return true;
+  }catch(e){console.error('Canonical catalogue sync skipped:',e);return false}
+}
 const server=http.createServer(async(req,res)=>{const url=new URL(req.url,'http://localhost');if(url.pathname.startsWith('/api/'))return api(req,res,url);sendFile(req,res)});
-(async()=>{db=await load();await ensureAdmin();server.listen(PORT,()=>console.log(`PHOENIX GARAGE Phase 16 running at http://localhost:${PORT} (${usePostgres?'postgresql':'sqlite'})`));})().catch(err=>{console.error('Database startup failed:',err);process.exit(1)});
+(async()=>{db=await load();if(syncCanonicalCatalogue())await save(db);await ensureAdmin();server.listen(PORT,()=>console.log(`PHOENIX GARAGE Phase 16 running at http://localhost:${PORT} (${usePostgres?'postgresql':'sqlite'})`));})().catch(err=>{console.error('Database startup failed:',err);process.exit(1)});
