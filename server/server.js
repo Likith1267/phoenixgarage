@@ -141,7 +141,11 @@ function syncCanonicalCatalogue(){
     if(canonical.length!==30)return false;
     const custom=(db.products||[]).filter(p=>{
       const n=Number(p.id);
-      return n>30 && p.product_kind!=='universal_test' && p.seller_name!=='APEX Demo Manufacturer';
+      const ref=String(p.sku||p.part_number||p.oem||'').toUpperCase();
+      const seller=String(p.seller_name||'').toUpperCase();
+      const kind=String(p.product_kind||'').toLowerCase();
+      const staleDemo=kind==='universal_test'||seller==='APEX DEMO MANUFACTURER'||ref.startsWith('PG-REF-');
+      return n>30&&!staleDemo;
     });
     db.products=[...canonical,...custom];
     db.next.product=Math.max(0,...db.products.map(p=>Number(p.id)||0))+1;
