@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
  function card(v){
    const years=rows.filter(x=>String(x.type)===String(v.type)&&String(x.brand)===String(v.brand)&&String(x.model)===String(v.model)).map(x=>Number(x.year)).filter(Number.isFinite).sort((a,b)=>b-a);
    const rawSrc=v.image||'assets/vehicles/generated/'+Number(v.id)+'.svg';
-   const src=/^https?:\\/\\//i.test(rawSrc)?rawSrc:'../'+String(rawSrc).replace(/^\\.\\//,'');
+   const src=(String(rawSrc).startsWith('http://')||String(rawSrc).startsWith('https://'))?String(rawSrc):'../'+(String(rawSrc).startsWith('./')?String(rawSrc).slice(2):String(rawSrc));
    const fallback='../assets/vehicles/generated/'+Number(v.id)+'.svg?v=20260925';
    return '<article class="vehicleCard"><div class="vehicleCardImage"><img src="'+esc(src)+'" alt="'+esc(v.brand+' '+v.model)+'" loading="lazy" decoding="async" fetchpriority="low" onerror="this.onerror=null;this.src=\''+fallback+'\'"></div><div class="vehicleCardBody"><div class="vehicleBrand">'+esc(v.brand)+'</div><h3>'+esc(v.model)+'</h3><div class="vehicleYears">'+(years[years.length-1]||v.year)+'–'+(years[0]||v.year)+' · '+esc(v.engine||'Engine details')+'</div><div class="vehicleSpecs"><div class="vehicleSpec"><small>Power</small><b>'+esc(v.power||'—')+'</b></div><div class="vehicleSpec"><small>Torque</small><b>'+esc(v.torque||'—')+'</b></div><div class="vehicleSpec"><small>Fuel</small><b>'+esc(v.fuel||'—')+'</b></div><div class="vehicleSpec"><small>Transmission</small><b>'+esc(v.transmission||'—')+'</b></div></div><div class="vehicleCardAction"><span class="vehicleTypeBadge">'+esc(v.type).toUpperCase()+' · FITMENT READY</span><button class="btn vehicleView" data-id="'+esc(v.id)+'">SELECT →</button></div></div></article>'
  }
