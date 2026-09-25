@@ -9,7 +9,17 @@ function json(res,status,data){const body=JSON.stringify(data);res.writeHead(sta
 async function ensureAdmin(){
   db.users=db.users.filter(u=>!/^test-|^qa-|^authtest@/i.test(String(u.email||'')));
   let u=db.users.find(x=>x.role==='admin');
-  if(!u){u={id:id(db,'user'),name:'Phoenix Garage Admin',email:'admin@phoenixgarage.local',password_hash:hash('Admin@12345'),role:'admin',phone:'',created_at:now()};db.users.push(u);await save(db)}
+  if(!u){u={id:id(db,'user'),name:'Phoenix Garage Admin',email:'admin@phoenixgarage.local',password_hash:hash('Admin@12345'),role:'admin',phone:'',created_at:now()};db.users.push(u)}
+  const demos=[
+    {email:'demo.customer@phoenixgarage.local',name:'Phoenix Demo Customer',role:'customer',password:'Demo@12345'},
+    {email:'demo.workshop@phoenixgarage.local',name:'Phoenix Demo Workshop',role:'workshop',password:'Demo@12345'}
+  ];
+  for(const d of demos){
+    let demo=db.users.find(x=>x.email===d.email);
+    if(!demo){demo={id:id(db,'user'),name:d.name,email:d.email,password_hash:hash(d.password),role:d.role,phone:'',created_at:now()};db.users.push(demo)}
+    else {demo.name=d.name;demo.role=d.role;demo.password_hash=hash(d.password)}
+  }
+  await save(db);
 }
 
 function adminAuth(req){const u=auth(req);return u&&u.role==='admin'?u:null}
