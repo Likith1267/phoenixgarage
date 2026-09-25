@@ -2,7 +2,7 @@
 const PRODUCT_IMAGE_PATHS={
   3:'assets/products/led-headlight-bulb.jpg',
   4:'assets/products/engine-air-filter.jpg',
-  10:'assets/products/spark-plug.jpg',
+  10:'assets/products/spark-plug.jpg',7:'https://images.implementos.cl/img/1000/CASLMT0009-1.jpg',15:'https://i5.walmartimages.com/seo/6-pc-DENSO-3473-Spark-Plugs-for-90919-01249-FK20HBR11-Ignition-Wire-Secondary_c108632f-24d7-4038-aaed-534842889a5d.cbcf9f8ee8a75018c6d7a04be1ec351a.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768',39:'https://www.atp-autoteile.de/media/h/3B7534D8D230D2437CA650D0CF7F16D0A57CB594/product/2000x2000/1732486.jpg',
   13:'assets/products/oil-filter.jpg',
   14:'assets/products/cabin-filter.jpg',
   16:'assets/products/brake-pads.jpg',
